@@ -20,11 +20,9 @@
   * { -webkit-tap-highlight-color: transparent; }
   html, body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif; color: var(--text); background: #f0f7ff; }
   body { overflow-x: hidden; }
-
   .hero-bg {
     background: linear-gradient(180deg, #42AAF4 0%, #7cc4f7 40%, #b8e0fb 70%, #FFFFFF 100%);
   }
-
   .play-card {
     background: #fff;
     border-radius: 20px;
@@ -32,7 +30,6 @@
     position: relative;
     overflow: hidden;
   }
-
   .stage-card {
     background: #fff;
     border-radius: 16px;
@@ -46,7 +43,6 @@
   .stage-card.green  { border-left-color: var(--green); }
   .stage-card.red    { border-left-color: var(--red); }
   .stage-card.gold   { border-left-color: #e8c47a; }
-
   .stage-title {
     display: flex; align-items: center; gap: 8px;
     font-weight: 800; font-size: 17px; color: var(--text);
@@ -57,14 +53,12 @@
     display: flex; align-items: center; justify-content: center;
     color: #fff; flex-shrink: 0;
   }
-
   .tab-panel { display: none; animation: fadeUp .35s ease; }
   .tab-panel.active { display: block; }
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(12px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-
   .bottom-nav {
     position: fixed; bottom: 0; left: 0; right: 0;
     background: rgba(255,255,255,0.95);
@@ -94,7 +88,6 @@
     transition: all .3s cubic-bezier(.34,1.56,.64,1);
   }
   .nav-label { font-size: 11px; font-weight: 600; }
-
   .game-pin {
     position: absolute;
     width: 52px; height: 52px;
@@ -115,7 +108,6 @@
     0%,100% { transform: translateY(0); }
     50%     { transform: translateY(-6px); }
   }
-
   .modal-overlay {
     position: fixed; inset: 0; background: rgba(0,0,0,0.5);
     z-index: 200; display: none; align-items: center; justify-content: center;
@@ -136,7 +128,6 @@
     from { opacity:0; transform: scale(.85) translateY(20px); }
     to   { opacity:1; transform: scale(1) translateY(0); }
   }
-
   .qr-box {
     width: 160px; height: 160px;
     background: #fff;
@@ -159,7 +150,6 @@
     opacity: .15;
     border-radius: 8px;
   }
-
   .img-placeholder {
     background: linear-gradient(135deg, #e8f4fd 0%, #d0e9fc 100%);
     border: 2px dashed rgba(66,170,244,0.4);
@@ -168,12 +158,10 @@
     color: var(--sky); gap: 8px;
     min-height: 160px;
   }
-
   .cloud {
     position: absolute; background: #fff; border-radius: 50%;
     opacity: .7; pointer-events: none;
   }
-
   .info-item {
     display: flex; gap: 10px; padding: 10px 0;
     border-bottom: 1px dashed rgba(66,170,244,0.15);
@@ -187,17 +175,14 @@
     display: flex; align-items: center; justify-content: center;
     margin-top: 2px;
   }
-
   .tag-pill {
     display: inline-flex; align-items: center; gap: 4px;
     padding: 3px 10px; border-radius: 20px;
     font-size: 12px; font-weight: 600;
   }
-
   .main-scroll {
     padding-bottom: calc(90px + env(safe-area-inset-bottom));
   }
-
   .hero-title {
     color: #0d3b66;
     text-shadow: 0 1px 2px rgba(255,255,255,0.4);
@@ -230,14 +215,12 @@
   }
   .hero-badge span { color: #0d3b66 !important; }
   .hero-badge svg { color: #0d3b66 !important; }
-
   .map-container {
     position: relative;
     border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 8px 24px rgba(66,170,244,0.18);
   }
-
   .section-heading {
     display: flex; align-items: center; gap: 8px;
     font-size: 18px; font-weight: 800; color: var(--text);
@@ -248,10 +231,8 @@
     background: linear-gradient(180deg, #42AAF4, #FF9A30);
     border-radius: 2px;
   }
-
   .text-body { font-size: 14px; line-height: 1.8; color: var(--text2); }
   .text-label { font-size: 13px; font-weight: 700; color: var(--text); }
-
   .highlight-box {
     background: linear-gradient(135deg, #FFF5E8, #FFE8CC);
     border-radius: 12px; padding: 12px 14px;
@@ -266,7 +247,6 @@
     background: linear-gradient(135deg, #FEF0EF, #FDE0DD);
     border-color: rgba(229,56,39,0.2);
   }
-
   .app-container {
     max-width: 480px; margin: 0 auto;
     background: #f0f7ff;
@@ -283,22 +263,18 @@
 </style>
 </head>
 <body>
-
 <div class="app-container">
-
  <!-- ============ Hero 区域 ============ -->
   <header class="hero-gradient relative overflow-hidden">
     <!-- 装饰云朵 -->
     <div class="absolute top-6 left-4 w-16 h-8 bg-white/70 rounded-full blur-[2px]"></div>
     <div class="absolute top-12 right-8 w-20 h-9 bg-white/60 rounded-full blur-[2px]"></div>
     <div class="absolute top-20 left-1/3 w-12 h-6 bg-white/50 rounded-full blur-[2px]"></div>
-
     <div class="px-5 pt-8 pb-6 relative z-10">
       <!-- 16:9 海报位 -->
       <div class="img-placeholder" style="border: none; background: transparent;">
-        <img src="images/hero-poster.jpg" alt="活动海报">
+        <img src="images/1.jpg" alt="活动海报">
       </div>
-
       <!-- 活动标题 -->
       <div class="text-center mt-6">
 	<h1 class="whitespace-nowrap font-extrabold text-[#FF9A30] title-glow tracking-wide leading-snug overflow-hidden"
@@ -310,18 +286,13 @@
         </div>
       </div>
     </div>
-
     <!-- 底部圆弧过渡 -->
     <div class="absolute bottom-0 left-0 right-0 h-6 bg-[#F4FAFF] rounded-t-[28px]"></div>
   </header>
-
   <!-- ============ Tab 内容区 ============ -->
   <main class="px-5 pt-2 relative z-10">
-
-
     <!-- ========== TAB 1: 活动须知 ========== -->
     <div id="tab-notice" class="tab-panel active">
-
       <div class="play-card p-5 mb-4">
         <div class="flex items-center gap-2 mb-3">
           <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,#42AAF4,#6bc0f7);">
@@ -333,7 +304,6 @@
           欢迎参加 <strong class="text-[#42AAF4]">2026年数字能源研发体系 Family Day</strong> 特别活动！为了让大家的快乐加倍、安心加倍，小助手在这里有几条小小的"安全小贴士"要提醒大家哦～
         </p>
       </div>
-
       <div class="stage-card gold">
         <div class="stage-title">
           <div class="icon-badge" style="background:linear-gradient(135deg,#e8c47a,#F9DEB1);color:#8a6d2b;">
@@ -345,9 +315,7 @@
           根据今年公司最新入园规定，门票需绑定<strong>员工工号</strong>。如您抢票成功，请确认本人能够到场参与。<strong class="text-[#E53827]">不得私自将门票转售</strong>，一经查证确认，原持票人需承担相应责任。
         </p>
       </div>
-
       <div class="section-heading mt-5">温馨提醒 · 请您关注</div>
-
       <div class="play-card p-4 mb-4">
         <div class="info-item"><div class="info-num">1</div><div>一个家庭仅有一张门票，是您和亲友在溪村园区畅游的凭证，请务必保管好！</div></div>
         <div class="info-item"><div class="info-num">2</div><div>为使加班同事能聚焦工作及信息安全要求，参观人员<strong>请勿进入办公区</strong>参观，请勿带家属从地库刷卡进入大堂区域。同时未经申请，不得自行携带相机、无人机在园区拍照。</div></div>
@@ -358,7 +326,6 @@
         <div class="info-item"><div class="info-num">7</div><div>参观期间请爱护园区环境，请勿随意丢垃圾，勿在建筑物和雕塑上随意涂画；不攀爬围墙、不采摘花朵、不折枝等。</div></div>
         <div class="info-item"><div class="info-num">8</div><div>园区内生态多样，为了您的安全，<strong>请勿投喂动物</strong>，勿在河边随意走动，以防落水。</div></div>
       </div>
-
       <div class="highlight-box red-bg mb-4">
         <div class="flex items-center gap-2 mb-2">
           <i data-lucide="ambulance" style="width:18px;height:18px;color:#E53827;"></i>
@@ -370,16 +337,13 @@
           （溪村急救调度中心），或前往溪村 <strong>G10 医疗点</strong>。
         </p>
       </div>
-
       <div class="text-center py-4">
         <p class="text-sm font-bold text-[#42AAF4]">🎉 祝大家玩得开心，安全第一，快乐第二！</p>
         <p class="text-xs text-[#999] mt-1">谢谢大家的配合！</p>
       </div>
     </div>
-
     <!-- ========== TAB 2: 活动流程 ========== -->
     <div id="tab-schedule" class="tab-panel">
-
       <!-- 阶段一：车辆信息 -->
       <div class="stage-card">
         <div class="stage-title">
@@ -388,7 +352,6 @@
           </div>
           车辆信息
         </div>
-
         <div class="flex items-center gap-2 mb-3 flex-wrap">
           <span class="tag-pill" style="background:#E8F4FD;color:#42AAF4;">
             <i data-lucide="calendar" style="width:12px;height:12px;"></i>
@@ -399,12 +362,10 @@
             09:00 - 17:00
           </span>
         </div>
-
         <div class="text-label flex items-center gap-1.5 mb-2">
           <i data-lucide="navigation" style="width:14px;height:14px;color:#42AAF4;"></i>
           导航信息
         </div>
-
         <div class="space-y-2 mb-3">
           <div class="flex gap-2 text-sm text-[#555] leading-relaxed">
             <span class="font-bold text-[#42AAF4] flex-shrink-0">自驾：</span>
@@ -415,12 +376,10 @@
             <span>从溪村 <strong>H区三家巷</strong> 进入，建议您 <strong class="text-[#E53827]">8:30/13:30前</strong> 到达</span>
           </div>
         </div>
-
         <div class="text-label flex items-center gap-1.5 mb-2">
           <i data-lucide="bus-front" style="width:14px;height:14px;color:#FF9A30;"></i>
           乘坐大巴
         </div>
-
         <div class="bg-[#F0F7FF] rounded-xl p-3 space-y-2 text-sm text-[#555] leading-relaxed">
           <div class="flex gap-2">
             <span class="tag-pill flex-shrink-0" style="background:#42AAF4;color:#fff;">去程</span>
@@ -431,14 +390,12 @@
             <span><strong>13:00 / 18:00</strong> 溪村L区停车场集合，返回深圳安托山、坂田华为地铁站-嘉御山-荔枝苑</span>
           </div>
         </div>
-
         <div class="highlight-box red-bg mt-3">
           <p class="text-xs text-[#555] leading-relaxed">
             <strong class="text-[#E53827]">⚠ 温馨提醒：</strong>信息安全要求，家属不能进入办公区参观，请勿带家属从地库闸机刷卡进入大堂区域。
           </p>
         </div>
       </div>
-
       <!-- 阶段二：活动流程 -->
       <div class="stage-card orange">
         <div class="stage-title">
@@ -447,9 +404,8 @@
           </div>
           活动流程
         </div>
-        <img src="mages/medical-map.png" alt="活动流程" class="w-full h-auto rounded-xl block" onerror="this.outerHTML='<div class=\'img-placeholder\' style=\'min-height:200px;\'><i data-lucide=\'image-plus\' style=\'width:40px;height:40px;\'></i><span class=\'text-sm font-semibold\'>活动流程图片位</span><span class=\'text-xs opacity-70\'>请将流程图命名为 schedule.png 放在同目录</span></div>';lucide.createIcons();">
+        <img src="images/flow-chart.png" alt="活动流程" class="w-full h-auto rounded-xl block" onerror="this.outerHTML='<div class=\'img-placeholder\' style=\'min-height:200px;\'><i data-lucide=\'image-plus\' style=\'width:40px;height:40px;\'></i><span class=\'text-sm font-semibold\'>活动流程图片位</span><span class=\'text-xs opacity-70\'>请将流程图命名为 schedule.png 放在同目录</span></div>';lucide.createIcons();">
       </div>
-
       <!-- 阶段三：礼品兑换 -->
       <div class="stage-card green">
         <div class="stage-title">
@@ -458,14 +414,12 @@
           </div>
           礼品兑换
         </div>
-
         <div class="flex items-center gap-2 mb-3">
           <span class="tag-pill" style="background:#ECFDF3;color:#37D261;">
             <i data-lucide="clock" style="width:12px;height:12px;"></i>
             11:30 - 15:30
           </span>
         </div>
-
         <div class="bg-[#F0FDF4] rounded-xl p-3 mb-3">
           <div class="flex items-center gap-2 mb-1.5">
             <i data-lucide="package" style="width:15px;height:15px;color:#37D261;"></i>
@@ -475,7 +429,6 @@
             每个家庭可凭<strong>家庭礼包兑换券</strong>，在溪村 <strong>G10家庭礼包领取处</strong> 领取一份定制家庭礼包。
           </p>
         </div>
-
         <div class="bg-[#FFF8F0] rounded-xl p-3">
           <div class="flex items-center gap-2 mb-1.5">
             <i data-lucide="trophy" style="width:15px;height:15px;color:#FF9A30;"></i>
@@ -486,7 +439,6 @@
           </p>
         </div>
       </div>
-
       <!-- 阶段四：用餐信息 -->
       <div class="stage-card red">
         <div class="stage-title">
@@ -495,14 +447,12 @@
           </div>
           用餐信息
         </div>
-
         <div class="flex items-center gap-2 mb-3 flex-wrap">
           <span class="tag-pill" style="background:#FEF0EF;color:#E53827;">
             <i data-lucide="calendar" style="width:12px;height:12px;"></i>
             2026年9月13日（周日）
           </span>
         </div>
-
         <div class="text-sm text-[#555] leading-relaxed mb-3">
           <div class="flex gap-2 mb-1">
             <span class="font-bold text-[#333] flex-shrink-0">使用时间：</span>
@@ -513,7 +463,6 @@
             <span>G1家乐缘 / G3探鱼 / 秦关面道 / H10肯德基（以上餐厅自由选择）</span>
           </div>
         </div>
-
         <div class="highlight-box">
           <div class="text-xs font-extrabold text-[#FF9A30] mb-1.5">温馨提示</div>
           <div class="space-y-1 text-xs text-[#555] leading-relaxed">
@@ -523,30 +472,22 @@
           </div>
         </div>
       </div>
-
     </div>
-
     <!-- ========== TAB 3: 活动地图 ========== -->
     <div id="tab-map" class="tab-panel">
-
       <div class="section-heading">现场地图 </div>
       <p class="text-sm text-[#555] mb-4 -mt-2"> 找到你最想去游玩的点🎮</p>
-
       <div class="map-container mb-5">
         <img src="images/site-map.jpg" alt="溪村园区地图" class="w-full h-auto block" onerror="this.outerHTML='<div class=\'img-placeholder\' style=\'min-height:380px;border-radius:0;border:none;background:linear-gradient(135deg,#d4ecfd 0%,#b8e0fb 50%,#e8f4fd 100%);\'><div class=\'text-center\'><i data-lucide=\'map\' style=\'width:48px;height:48px;color:#42AAF4;opacity:.6;\'></i><p class=\'text-sm font-semibold text-[#42AAF4] mt-2\'>溪村园区地图</p><p class=\'text-xs text-[#42AAF4] opacity-70 mt-1\'>请将地图命名为 map.jpg 放在同目录</p></div></div>';lucide.createIcons();">
-
       </div>
-
       <div class="section-heading">游戏一览</div>
 	<p class="text-sm text-[#555] mb-4 -mt-2"> 点击查看游戏详细规则🎮</p>
       <div class="play-card p-4 mb-4">
         <div id="gameList"></div>
       </div>
     </div>
-
     <!-- ========== TAB 4: 精彩瞬间 ========== -->
     <div id="tab-moments" class="tab-panel">
-
       <!-- 照片直播 -->
       <div class="stage-card">
         <div class="stage-title">
@@ -557,7 +498,7 @@
         </div>
         <div class="text-center py-4">
           <p class="text-sm font-bold text-[#333] mb-4">📸 点击跳转照片直播</p>
-          <img src="images/qrcode-survey.jpg" alt="照片直播二维码" class="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 max-w-full rounded-xl object-contain mx-auto" style="border:3px solid #42AAF4;" onerror="this.outerHTML='<div class=\'qr-box\'><div class=\'relative z-10 text-center\'><i data-lucide=\'qr-code\' style=\'width:40px;height:40px;color:#42AAF4;\'></i><p class=\'text-xs text-[#42AAF4] mt-1 font-semibold\'>请将二维码命名为 qr-photo.png</p></div></div>';lucide.createIcons();">
+          <img src="images/qrcode-live.jpg" alt="照片直播二维码" class="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 max-w-full rounded-xl object-contain mx-auto" style="border:3px solid #42AAF4;" onerror="this.outerHTML='<div class=\'qr-box\'><div class=\'relative z-10 text-center\'><i data-lucide=\'qr-code\' style=\'width:40px;height:40px;color:#42AAF4;\'></i><p class=\'text-xs text-[#42AAF4] mt-1 font-semibold\'>请将二维码命名为 qr-photo.png</p></div></div>';lucide.createIcons();">
           <p class="text-xs text-[#999] mt-3">扫码或点击查看活动实时精彩照片</p>
          <button class="mt-4 px-6 py-2.5 rounded-full text-white text-sm font-bold shadow-lg"
         style="background:linear-gradient(135deg,#42AAF4,#6bc0f7);box-shadow:0 4px 14px rgba(66,170,244,0.35);"
@@ -567,12 +508,8 @@
     进入照片直播
   </span>
 </button>
-
-            </span>
-          </button>
         </div>
       </div>
-
       <!-- 满意度调查 -->
       <div class="stage-card orange">
         <div class="stage-title">
@@ -583,7 +520,7 @@
         </div>
         <div class="text-center py-4">
           <p class="text-sm font-bold text-[#333] mb-4">📝 点击进入满意度调查问卷</p>
-          <img src="qr-survey.jpg" alt="满意度调查二维码" class="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 max-w-full rounded-xl object-contain mx-auto" style="border:3px solid #FF9A30;" onerror="this.outerHTML='<div class=\'qr-box\' style=\'border-color:#FF9A30;\'><div class=\'relative z-10 text-center\'><i data-lucide=\'qr-code\' style=\'width:40px;height:40px;color:#FF9A30;\'></i><p class=\'text-xs text-[#FF9A30] mt-1 font-semibold\'>请将二维码命名为 qr-survey.jpg</p></div></div>';lucide.createIcons();">
+          <img src="images/qrcode-survey.jpg" alt="满意度调查二维码" class="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 max-w-full rounded-xl object-contain mx-auto" style="border:3px solid #FF9A30;" onerror="this.outerHTML='<div class=\'qr-box\' style=\'border-color:#FF9A30;\'><div class=\'relative z-10 text-center\'><i data-lucide=\'qr-code\' style=\'width:40px;height:40px;color:#FF9A30;\'></i><p class=\'text-xs text-[#FF9A30] mt-1 font-semibold\'>请将二维码命名为 qr-survey.jpg</p></div></div>';lucide.createIcons();">
           <p class="text-xs text-[#999] mt-3">您的反馈是我们进步的动力！</p>
 	<button class="mt-4 px-6 py-2.5 rounded-full text-white text-sm font-bold shadow-lg"
         style="background:linear-gradient(135deg,#FF9A30,#ffb866);box-shadow:0 4px 14px rgba(255,154,48,0.35);"
@@ -595,7 +532,6 @@
 	</button>
         </div>
       </div>
-
             <!-- 感谢语 -->
       <div class="text-center py-4">
         <div class="inline-block bg-gradient-to-r from-sky/10 to-orange/10 px-6 py-4 rounded-2xl">
@@ -603,14 +539,10 @@
           <p class="text-xs text-sub mt-1">感谢每一位家人的到来与陪伴</p>
         </div>
       </div>
-
     </section>
-
   </main>
 </div>
-
   </div>
-
   <!-- ==================== BOTTOM NAV ==================== -->
   <nav class="bottom-nav">
     <div class="nav-item active" data-tab="notice" onclick="switchTab('notice')">
@@ -630,9 +562,7 @@
       <span class="nav-label">精彩瞬间</span>
     </div>
   </nav>
-
 </div>
-
 <!-- ==================== GAME MODAL ==================== -->
 <div class="modal-overlay" id="gameModal" onclick="closeGameModal(event)">
   <div class="modal-box" onclick="event.stopPropagation()">
@@ -642,7 +572,6 @@
     <div id="modalContent"></div>
   </div>
 </div>
-
 <script>
   // ===== Game data =====
   const games = [
@@ -703,7 +632,6 @@
       rule: '在规定场地内，玩家通过游戏设备感应个人肢体来推动游戏的进行。'
     }
   ];
-
   // ===== Render game list =====
   function renderGameList() {
     const list = document.getElementById('gameList');
@@ -724,7 +652,6 @@
     `).join('');
     lucide.createIcons();
   }
-
   // ===== Modal =====
   function openGameModal(index) {
     const g = games[index];
@@ -757,13 +684,11 @@
     lucide.createIcons();
     document.body.style.overflow = 'hidden';
   }
-
   function closeGameModal(e) {
     if (e && e.target !== e.currentTarget) return;
     document.getElementById('gameModal').classList.remove('show');
     document.body.style.overflow = '';
   }
-
   // ===== Tab switching =====
   function switchTab(tabName) {
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
@@ -772,17 +697,14 @@
     document.querySelector(`.nav-item[data-tab="${tabName}"]`).classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
   // ===== Init =====
   document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
     renderGameList();
   });
-
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeGameModal();
   });
 </script>
-
 </body>
 </html>
