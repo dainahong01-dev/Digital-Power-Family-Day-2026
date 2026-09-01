@@ -29,7 +29,7 @@
         },
       },
     },
-  };
+  }
 </script>
 <style>
   html, body { -webkit-tap-highlight-color: transparent; }
@@ -70,7 +70,6 @@
   .stage-card.border-green::before { background: linear-gradient(180deg,#5BE083,#37D261); }
   .stage-card.border-red::before   { background: linear-gradient(180deg,#F06A5C,#E53827); }
   .stage-card.border-gold::before  { background: linear-gradient(180deg,#FCE9C4,#F9DEB1); }
-
   /* Tab 切换动画 */
   .tab-panel { display: none; animation: fadeUp .35s ease both; }
   .tab-panel.active { display: block; }
@@ -78,7 +77,6 @@
     from { opacity: 0; transform: translateY(10px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-
   /* 底部导航 */
   .bottom-nav {
     position: fixed; left: 50%; transform: translateX(-50%);
@@ -116,7 +114,6 @@
     display: flex; align-items: center; justify-content: center;
     transition: background .25s;
   }
-
   /* 图片占位容器 */
   .img-placeholder {
     position: relative;
@@ -140,7 +137,6 @@
     border-radius: 16px;
   }
   img { max-width: 100%; height: auto; display: inline-block; }
-
   /* 二维码容器 */
   .qr-box {
     width: clamp(116px, 34vw, 160px);
@@ -154,12 +150,10 @@
     box-shadow: 0 4px 16px rgba(66,170,244,0.2);
   }
   .qr-box::after { content: ''; display: none; }
-
   /* 标题装饰（橙色发光） */
   .title-glow {
     text-shadow: 0 2px 10px rgba(255,255,255,0.8), 0 4px 20px rgba(255,154,48,0.55);
   }
-
   /* 序号胶囊 */
   .num-pill {
     display: inline-flex; align-items: center; justify-content: center;
@@ -169,7 +163,6 @@
     flex-shrink: 0;
     box-shadow: 0 2px 6px rgba(255,154,48,0.4);
   }
-
   /* 提示条 */
   .tip-bar {
     background: linear-gradient(90deg,#FFF4E5,#FFE8CC);
@@ -181,11 +174,9 @@
     border-left: 4px solid #E53827;
     border-radius: 12px;
   }
-
   /* 滚动条 */
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-thumb { background: #B8E0FB; border-radius: 3px; }
-
   /* PC 端最大宽度 */
   .app-container { max-width: 640px; margin: 0 auto; }
   @media (min-width: 768px) {
@@ -204,22 +195,18 @@
 </style>
 </head>
 <body>
-
 <div class="app-container relative">
-
   <!-- ============ Hero 区域 ============ -->
   <header class="hero-gradient relative overflow-hidden">
     <!-- 装饰云朵 -->
     <div class="absolute top-6 left-4 w-16 h-8 bg-white/70 rounded-full blur-[2px]"></div>
     <div class="absolute top-12 right-8 w-20 h-9 bg-white/60 rounded-full blur-[2px]"></div>
     <div class="absolute top-20 left-1/3 w-12 h-6 bg-white/50 rounded-full blur-[2px]"></div>
-
     <div class="px-5 pt-8 pb-6 relative z-10">
       <!-- 16:9 海报位 -->
       <div class="img-placeholder" style="border: none; background: transparent;">
-        <img src="images/hero-poster.jpg" alt="活动海报">
+        <img src="https://raw.githubusercontent.com/dainahong01-dev/Digital-Power-Family-Day-2026/main/image/images/hero-poster.jpg" alt="活动海报">
       </div>
-
       <!-- 活动标题 -->
       <div class="text-center mt-6">
         <h1 class="text-2xl md:text-3xl font-extrabold text-[#FF9A30] title-glow tracking-wide leading-snug">
@@ -230,14 +217,11 @@
         </div>
       </div>
     </div>
-
     <!-- 底部圆弧过渡 -->
     <div class="absolute bottom-0 left-0 right-0 h-6 bg-[#F4FAFF] rounded-t-[28px]"></div>
   </header>
-
   <!-- ============ Tab 内容区 ============ -->
   <main class="px-5 pt-2 relative z-10">
-
     <!-- ===== Tab 1：活动须知 ===== -->
     <section id="tab-notice" class="tab-panel active">
       <div class="fun-card p-5 mb-4">
@@ -251,7 +235,6 @@
           大家好！欢迎参加 <span class="text-skydeep font-semibold">2026年数字能源研发体系 Family Day 特别活动</span>！为了让大家的快乐加倍、安心加倍，小助手在这里有几条小小的"安全小贴士"要提醒大家哦～
         </p>
       </div>
-
       <!-- 门票规则 -->
       <div class="stage-card border-red mb-4">
         <div class="flex items-center gap-2 mb-2">
@@ -262,7 +245,6 @@
           根据今年公司最新入园规定，门票需绑定<span class="font-semibold text-ink">员工工号</span>。如您抢票成功，请确认本人能够到场参与，<span class="font-semibold">不得私自将门票转售</span>，一经查证确认，原持票人需承担相应责任。
         </p>
       </div>
-
       <!-- 温馨提醒 -->
       <div class="fun-card p-5 mb-4">
         <div class="flex items-center gap-2 mb-4">
@@ -271,7 +253,6 @@
           </div>
           <h3 class="text-lg font-extrabold text-ink">以下温馨提醒请您关注</h3>
         </div>
-
         <ol class="space-y-3">
           <li class="flex gap-3">
             <span class="num-pill">1</span>
@@ -311,7 +292,6 @@
           </li>
         </ol>
       </div>
-
       <div class="tip-bar p-4 mb-6">
         <p class="text-sm text-ink leading-relaxed">
           <span class="font-extrabold text-orange">祝大家玩得开心～</span>
@@ -319,10 +299,8 @@
         </p>
       </div>
     </section>
-
     <!-- ===== Tab 2：活动信息 ===== -->
     <section id="tab-flow" class="tab-panel">
-
       <!-- 阶段一：入园须知 -->
       <div class="stage-card border-sky mb-4">
         <div class="flex items-center gap-2 mb-3">
@@ -331,7 +309,6 @@
           </div>
           <h3 class="font-extrabold text-ink text-base">入园须知</h3>
         </div>
-
         <div class="space-y-3 text-sm">
           <div class="flex items-start gap-2">
             <i data-lucide="clock" class="w-4 h-4 text-skydeep mt-0.5 flex-shrink-0"></i>
@@ -339,7 +316,6 @@
               <span class="font-semibold text-ink">活动时间：</span>2026年9月12日（周六）09:00 - 17:00
             </p>
           </div>
-
           <div class="bg-sky/5 rounded-xl p-3">
             <p class="font-semibold text-skydeep text-xs mb-2 flex items-center gap-1">
               <i data-lucide="navigation" class="w-3.5 h-3.5"></i> 导航信息
@@ -349,7 +325,6 @@
               <p><span class="font-bold text-ink">🚶 步行：</span>从华为溪流背坡村康桥入口进入</p>
             </div>
           </div>
-
           <div class="danger-bar p-3">
             <p class="text-xs text-sub leading-relaxed flex items-start gap-2">
               <i data-lucide="shield-alert" class="w-4 h-4 text-red mt-0.5 flex-shrink-0"></i>
@@ -358,7 +333,6 @@
           </div>
         </div>
       </div>
-
       <!-- 阶段二：礼品兑换 -->
       <div class="stage-card border-orange mb-4">
         <div class="flex items-center gap-2 mb-3">
@@ -367,7 +341,6 @@
           </div>
           <h3 class="font-extrabold text-ink text-base">礼品兑换</h3>
         </div>
-
         <div class="space-y-3 text-sm">
           <div class="flex items-start gap-2">
             <i data-lucide="clock" class="w-4 h-4 text-orange mt-0.5 flex-shrink-0"></i>
@@ -375,15 +348,12 @@
               <span class="font-semibold text-ink">时间：</span>09:00-17:00
             </p>
           </div>
-
           <div class="bg-orange/5 rounded-xl p-3">
             <p class="font-bold text-orange text-xs mb-1.5">🎁 家庭礼包</p>
             <p class="text-sub text-xs leading-relaxed">每个家庭可凭<span class="font-semibold text-ink">家庭礼包兑换券</span>，在溪村 E2食堂连廊<span class="font-semibold text-ink">家庭礼包领取区</span>领取一份定制家庭礼包。</p>
           </div>
-
         </div>
       </div>
-
       <!-- 阶段三：医疗应急 -->
       <div class="stage-card border-red mb-6">
         <div class="flex items-center gap-2 mb-3">
@@ -392,7 +362,6 @@
           </div>
           <h3 class="font-extrabold text-ink text-base">医疗应急</h3>
         </div>
-
         <div class="space-y-3 text-sm">
           <div class="danger-bar p-3">
             <p class="text-xs text-sub leading-relaxed flex items-start gap-2">
@@ -400,19 +369,15 @@
               <span>活动中遇到任何医疗应急问题，请立即拨打<span class="font-bold text-red text-base">溪村急救调度中心 0769-28250120</span>。</span>
             </p>
           </div>
-
           <!-- 图片占位区域 -->
 	<div class="img-placeholder" style="border: none; background: transparent;">
-	  <img src="images/medical-map.png" alt="医疗点位置图">
+	  <img src="https://raw.githubusercontent.com/dainahong01-dev/Digital-Power-Family-Day-2026/main/image/images/medical-map.png" alt="医疗点位置图">
 	</div>
         </div>
       </div>
-
     </section>
-
     <!-- ===== Tab 3：活动地图 ===== -->
     <section id="tab-map" class="tab-panel">
-
       <!-- 童年乐选铺 -->
       <div class="stage-card border-orange mb-4">
         <div class="flex items-center gap-2 mb-2">
@@ -425,7 +390,6 @@
           每个家属凭<span class="font-semibold text-ink">美食券</span>可领取<span class="text-orange font-bold">自由行小食礼盒</span>一份。
         </p>
       </div>
-
       <!-- 时光留影 -->
       <div class="stage-card border-sky mb-4">
         <div class="flex items-center gap-2 mb-2">
@@ -444,7 +408,6 @@
           <p class="text-xs text-sub mt-1">即可前往<span class="font-semibold text-ink">礼品兑换区</span>领取惊喜礼品 🎁</p>
         </div>
       </div>
-
       <!-- 照片直播二维码 -->
       <div class="fun-card p-5 mb-4 text-center">
         <p class="text-sm font-extrabold text-ink mb-1 flex items-center justify-center gap-1.5">
@@ -454,11 +417,10 @@
         <p class="text-xs text-sub mb-4"></p>
         <div class="flex justify-center">
           <div class="qr-box cursor-pointer hover:scale-105 transition-transform" onclick="openLive()" role="button" aria-label="照片直播二维码" style="border:none; background:transparent; box-shadow:none;">
-            <img src="images/qrcode-live.jpg" alt="照片直播二维码" style="width:100%; height:100%; object-fit:contain; border-radius:16px;">
+            <img src="https://raw.githubusercontent.com/dainahong01-dev/Digital-Power-Family-Day-2026/main/image/images/qrcode-live.jpg" alt="照片直播二维码" style="width:100%; height:100%; object-fit:contain; border-radius:16px;">
           </div>
         </div>
       </div>
-
       <!-- 现场地图 -->
       <div class="fun-card p-5 mb-6">
         <div class="flex items-center gap-2 mb-3">
@@ -469,15 +431,12 @@
         </div>
         <p class="text-xs text-sub mb-3">找到你最想去游玩的点👇</p>
         <div class="img-placeholder" style="border: none; background: transparent;">
-          <img src="images/site-map.jpg" alt="现场地图">
+          <img src="https://raw.githubusercontent.com/dainahong01-dev/Digital-Power-Family-Day-2026/main/image/images/site-map.jpg" alt="现场地图">
         </div>
       </div>
-
     </section>
-
     <!-- ===== Tab 4：满意度调查 ===== -->
     <section id="tab-survey" class="tab-panel">
-
       <div class="stage-card border-gold mb-4">
         <div class="flex items-center gap-2 mb-3">
           <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-orange to-[#FF7A00] flex items-center justify-center text-white">
@@ -489,7 +448,6 @@
           您的每一条反馈都是我们前进的动力！请花一分钟填写满意度问卷，帮助我们把下次活动办得更好～ 💌
         </p>
       </div>
-
       <!-- 问卷二维码 -->
       <div class="fun-card p-6 mb-6 text-center">
         <p class="text-base font-extrabold text-ink mb-1 flex items-center justify-center gap-1.5">
@@ -499,11 +457,10 @@
         <p class="text-xs text-sub mb-5">长按识别 / 扫码填写，感谢您的参与！</p>
         <div class="flex justify-center">
           <div class="qr-box cursor-pointer hover:scale-105 transition-transform" onclick="openSurvey()" role="button" aria-label="满意度问卷二维码" style="border:none; background:transparent; box-shadow:none;">
-            <img src="images/qrcode-survey.jpg" alt="满意度问卷二维码" style="width:100%; height:100%; object-fit:contain; border-radius:16px;">
+            <img src="https://raw.githubusercontent.com/dainahong01-dev/Digital-Power-Family-Day-2026/main/image/images/qrcode-survey.jpg" alt="满意度问卷二维码" style="width:100%; height:100%; object-fit:contain; border-radius:16px;">
           </div>
         </div>
       </div>
-
       <!-- 感谢语 -->
       <div class="text-center py-4">
         <div class="inline-block bg-gradient-to-r from-sky/10 to-orange/10 px-6 py-4 rounded-2xl">
@@ -511,12 +468,9 @@
           <p class="text-xs text-sub mt-1">感谢每一位家人的到来与陪伴</p>
         </div>
       </div>
-
     </section>
-
   </main>
 </div>
-
 <!-- ============ 底部悬浮导航 ============ -->
 <nav class="bottom-nav">
   <div class="flex items-center justify-between">
@@ -538,7 +492,6 @@
     </div>
   </div>
 </nav>
-
 <!-- 链接配置（填错不会影响导航栏等其他功能）-->
 <script>
   var CONFIG = {
@@ -557,9 +510,7 @@
 <script>
   // 初始化 Lucide 图标
   var CONFIG = window.CONFIG || { surveyUrl: '', liveUrl: '' };
-
   lucide.createIcons();
-
   // 图片加载失败时显示可视化提示（含期望路径），方便排查
   document.querySelectorAll('.img-placeholder img, .qr-box img').forEach(function(img) {
     img.addEventListener('error', function() {
@@ -571,7 +522,6 @@
       this.parentNode.appendChild(warn);
     });
   });
-
   // Tab 切换逻辑
   var navItems = document.querySelectorAll('.nav-item');
   var tabPanels = document.querySelectorAll('.tab-panel');
@@ -581,7 +531,6 @@
     map:    document.getElementById('tab-map'),
     survey: document.getElementById('tab-survey'),
   };
-
   function switchTab(tabName) {
     navItems.forEach(function(item) {
       if (item.dataset.tab === tabName) {
@@ -603,11 +552,9 @@
     });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
   navItems.forEach(function(item) {
     item.addEventListener('click', function() { switchTab(item.dataset.tab); });
   });
-
   // 支持键盘左右方向键切换（PC 端友好）
   document.addEventListener('keydown', function(e) {
     var tabs = ['notice', 'flow', 'map', 'survey'];
@@ -620,6 +567,5 @@
     }
   });
 </script>
-
 </body>
 </html>
