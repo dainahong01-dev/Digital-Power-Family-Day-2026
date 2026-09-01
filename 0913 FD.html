@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>✧⁺★超能时光机 源梦溪游记★⁺✧ 2026数字能源研发体系Family Day</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<style>
+  :root {
+    --sky: #42AAF4;
+    --white: #FFFFFF;
+    --orange: #FF9A30;
+    --green: #37D261;
+    --red: #E53827;
+    --gold: #F9DEB1;
+    --text: #333333;
+    --text2: #555555;
+  }
+  * { -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif; color: var(--text); background: #f0f7ff; }
+  body { overflow-x: hidden; }
+
+  .hero-bg {
+    background: linear-gradient(180deg, #42AAF4 0%, #7cc4f7 40%, #b8e0fb 70%, #FFFFFF 100%);
+  }
+
+  .play-card {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(66,170,244,0.15), 0 2px 6px rgba(0,0,0,0.04);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stage-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(66,170,244,0.12);
+    border-left: 6px solid var(--sky);
+    padding: 18px 18px 18px 16px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .stage-card.orange { border-left-color: var(--orange); }
+  .stage-card.green  { border-left-color: var(--green); }
+  .stage-card.red    { border-left-color: var(--red); }
+  .stage-card.gold   { border-left-color: #e8c47a; }
+
+  .stage-title {
+    display: flex; align-items: center; gap: 8px;
+    font-weight: 800; font-size: 17px; color: var(--text);
+    margin-bottom: 12px;
+  }
+  .stage-title .icon-badge {
+    width: 32px; height: 32px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; flex-shrink: 0;
+  }
+
+  .tab-panel { display: none; animation: fadeUp .35s ease; }
+  .tab-panel.active { display: block; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .bottom-nav {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 -4px 20px rgba(66,170,244,0.12);
+    display: flex; justify-content: space-around; align-items: center;
+    padding: 8px 4px calc(8px + env(safe-area-inset-bottom));
+    z-index: 100;
+    border-top: 1px solid rgba(66,170,244,0.1);
+  }
+  .nav-item {
+    flex: 1; display: flex; flex-direction: column; align-items: center;
+    gap: 3px; padding: 6px 2px; cursor: pointer;
+    color: #999; transition: all .25s;
+    border-radius: 12px; position: relative;
+  }
+  .nav-item.active { color: var(--sky); }
+  .nav-item.active .nav-icon-wrap {
+    background: linear-gradient(135deg, #42AAF4, #6bc0f7);
+    color: #fff; transform: translateY(-4px);
+    box-shadow: 0 6px 14px rgba(66,170,244,0.35);
+  }
+  .nav-icon-wrap {
+    width: 40px; height: 40px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .3s cubic-bezier(.34,1.56,.64,1);
+  }
+  .nav-label { font-size: 11px; font-weight: 600; }
+
+  .game-pin {
+    position: absolute;
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 800; font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+    transition: transform .25s;
+    border: 3px solid #fff;
+    z-index: 5;
+    animation: pinBounce 2s ease-in-out infinite;
+  }
+  .game-pin:hover { transform: scale(1.12); }
+  .game-pin:nth-child(odd)  { animation-delay: .3s; }
+  .game-pin:nth-child(3n)   { animation-delay: .6s; }
+  @keyframes pinBounce {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-6px); }
+  }
+
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+    z-index: 200; display: none; align-items: center; justify-content: center;
+    padding: 24px;
+    backdrop-filter: blur(4px);
+  }
+  .modal-overlay.show { display: flex; animation: fadeIn .25s; }
+  @keyframes fadeIn { from {opacity:0} to {opacity:1} }
+  .modal-box {
+    background: #fff; border-radius: 24px;
+    max-width: 420px; width: 100%;
+    max-height: 80vh; overflow-y: auto;
+    padding: 28px 24px 24px;
+    animation: popIn .35s cubic-bezier(.34,1.56,.64,1);
+    position: relative;
+  }
+  @keyframes popIn {
+    from { opacity:0; transform: scale(.85) translateY(20px); }
+    to   { opacity:1; transform: scale(1) translateY(0); }
+  }
+
+  .qr-box {
+    width: 160px; height: 160px;
+    background: #fff;
+    border: 3px dashed var(--sky);
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+  .qr-box::before {
+    content: ''; position: absolute; inset: 8px;
+    background-image:
+      linear-gradient(45deg, #333 25%, transparent 25%),
+      linear-gradient(-45deg, #333 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #333 75%),
+      linear-gradient(-45deg, transparent 75%, #333 75%);
+    background-size: 12px 12px;
+    background-position: 0 0, 0 6px, 6px -6px, -6px 0;
+    opacity: .15;
+    border-radius: 8px;
+  }
+
+  .img-placeholder {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d0e9fc 100%);
+    border: 2px dashed rgba(66,170,244,0.4);
+    border-radius: 14px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: var(--sky); gap: 8px;
+    min-height: 160px;
+  }
+
+  .cloud {
+    position: absolute; background: #fff; border-radius: 50%;
+    opacity: .7; pointer-events: none;
+  }
+
+  .info-item {
+    display: flex; gap: 10px; padding: 10px 0;
+    border-bottom: 1px dashed rgba(66,170,244,0.15);
+    font-size: 14px; line-height: 1.7; color: var(--text2);
+  }
+  .info-item:last-child { border-bottom: none; }
+  .info-num {
+    flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+    background: linear-gradient(135deg, #42AAF4, #6bc0f7);
+    color: #fff; font-size: 12px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 2px;
+  }
+
+  .tag-pill {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 3px 10px; border-radius: 20px;
+    font-size: 12px; font-weight: 600;
+  }
+
+  .main-scroll {
+    padding-bottom: calc(90px + env(safe-area-inset-bottom));
+  }
+
+  .hero-title {
+    color: #0d3b66;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.4);
+    letter-spacing: 1px;
+  }
+  .hero-text-wrap {
+    position: relative;
+  }
+  .hero-text-wrap::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 110%;
+    height: 120%;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 50%, transparent 75%);
+    border-radius: 50%;
+    z-index: -1;
+    pointer-events: none;
+  }
+  .hero-subtitle {
+    color: #1a5276;
+  }
+  .hero-badge {
+    background: rgba(255,255,255,0.6) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 2px 8px rgba(13,59,102,0.12);
+  }
+  .hero-badge span { color: #0d3b66 !important; }
+  .hero-badge svg { color: #0d3b66 !important; }
+
+  .map-container {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(66,170,244,0.18);
+  }
+
+  .section-heading {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 18px; font-weight: 800; color: var(--text);
+    margin-bottom: 14px;
+  }
+  .section-heading::before {
+    content: ''; width: 4px; height: 20px;
+    background: linear-gradient(180deg, #42AAF4, #FF9A30);
+    border-radius: 2px;
+  }
+
+  .text-body { font-size: 14px; line-height: 1.8; color: var(--text2); }
+  .text-label { font-size: 13px; font-weight: 700; color: var(--text); }
+
+  .highlight-box {
+    background: linear-gradient(135deg, #FFF5E8, #FFE8CC);
+    border-radius: 12px; padding: 12px 14px;
+    border: 1px solid rgba(255,154,48,0.25);
+    margin-top: 10px;
+  }
+  .highlight-box.green-bg {
+    background: linear-gradient(135deg, #ECFDF3, #D4F7E0);
+    border-color: rgba(55,210,97,0.25);
+  }
+  .highlight-box.red-bg {
+    background: linear-gradient(135deg, #FEF0EF, #FDE0DD);
+    border-color: rgba(229,56,39,0.2);
+  }
+
+  .app-container {
+    max-width: 480px; margin: 0 auto;
+    background: #f0f7ff;
+    min-height: 100vh;
+    position: relative;
+    box-shadow: 0 0 40px rgba(0,0,0,0.06);
+  }
+  @media (min-width: 481px) {
+    .bottom-nav { max-width: 480px; left: 50%; transform: translateX(-50%); }
+  }
+  @media (max-width: 480px) {
+    .app-container { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app-container">
+
+ <!-- ============ Hero 区域 ============ -->
+  <header class="hero-gradient relative overflow-hidden">
+    <!-- 装饰云朵 -->
+    <div class="absolute top-6 left-4 w-16 h-8 bg-white/70 rounded-full blur-[2px]"></div>
+    <div class="absolute top-12 right-8 w-20 h-9 bg-white/60 rounded-full blur-[2px]"></div>
+    <div class="absolute top-20 left-1/3 w-12 h-6 bg-white/50 rounded-full blur-[2px]"></div>
+
+    <div class="px-5 pt-8 pb-6 relative z-10">
+      <!-- 16:9 海报位 -->
+      <div class="img-placeholder" style="border: none; background: transparent;">
+        <img src="images/hero-poster.jpg" alt="活动海报">
+      </div>
+
+      <!-- 活动标题 -->
+      <div class="text-center mt-6">
+	<h1 class="whitespace-nowrap font-extrabold text-[#FF9A30] title-glow tracking-wide leading-snug overflow-hidden"
+  	  style="font-size: clamp(13px, 4.5vw, 28px);">
+ 	 ✧⁺★超能时光机 源梦溪游记★⁺✧
+	</h1>
+        <div class="mt-3 inline-block bg-white/90 backdrop-blur px-5 py-2 rounded-full shadow-float">
+          <span class="text-skydeep text-sm md:text-base font-bold">2026年数字能源研发体系 Family Day 特别活动</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部圆弧过渡 -->
+    <div class="absolute bottom-0 left-0 right-0 h-6 bg-[#F4FAFF] rounded-t-[28px]"></div>
+  </header>
+
+  <!-- ============ Tab 内容区 ============ -->
+  <main class="px-5 pt-2 relative z-10">
+
+
+    <!-- ========== TAB 1: 活动须知 ========== -->
+    <div id="tab-notice" class="tab-panel active">
+
+      <div class="play-card p-5 mb-4">
+        <div class="flex items-center gap-2 mb-3">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,#42AAF4,#6bc0f7);">
+            <i data-lucide="heart-handshake" style="width:18px;height:18px;color:#fff;"></i>
+          </div>
+          <span class="text-base font-extrabold">致各位亲爱的家人们</span>
+        </div>
+        <p class="text-body">
+          欢迎参加 <strong class="text-[#42AAF4]">2026年数字能源研发体系 Family Day</strong> 特别活动！为了让大家的快乐加倍、安心加倍，小助手在这里有几条小小的"安全小贴士"要提醒大家哦～
+        </p>
+      </div>
+
+      <div class="stage-card gold">
+        <div class="stage-title">
+          <div class="icon-badge" style="background:linear-gradient(135deg,#e8c47a,#F9DEB1);color:#8a6d2b;">
+            <i data-lucide="ticket" style="width:16px;height:16px;"></i>
+          </div>
+          门票规则说明
+        </div>
+        <p class="text-body">
+          根据今年公司最新入园规定，门票需绑定<strong>员工工号</strong>。如您抢票成功，请确认本人能够到场参与。<strong class="text-[#E53827]">不得私自将门票转售</strong>，一经查证确认，原持票人需承担相应责任。
+        </p>
+      </div>
+
+      <div class="section-heading mt-5">温馨提醒 · 请您关注</div>
+
+      <div class="play-card p-4 mb-4">
+        <div class="info-item"><div class="info-num">1</div><div>一个家庭仅有一张门票，是您和亲友在溪村园区畅游的凭证，请务必保管好！</div></div>
+        <div class="info-item"><div class="info-num">2</div><div>为使加班同事能聚焦工作及信息安全要求，参观人员<strong>请勿进入办公区</strong>参观，请勿带家属从地库刷卡进入大堂区域。同时未经申请，不得自行携带相机、无人机在园区拍照。</div></div>
+        <div class="info-item"><div class="info-num">3</div><div>乘坐小火车时请注意上下车安全，请看护好物品及小孩，车厢内不允许打闹嬉戏、大声喧哗，请勿在车厢内饮食、乱丢垃圾或随意涂画。</div></div>
+        <div class="info-item"><div class="info-num">4</div><div><strong class="text-[#E53827]">禁止</strong>在小火车轨道警戒线内拍照或候车，并提醒小朋友不在轨道上玩耍、乱丢石头等影响小火车正常通行的行为。</div></div>
+        <div class="info-item"><div class="info-num">5</div><div>园区内设置了吸烟区，请在指定地点吸烟；园区内咖啡厅、餐厅、便利店、洗手间均可根据地图标识前往。</div></div>
+        <div class="info-item"><div class="info-num">6</div><div>出于消防安全，<strong class="text-[#E53827]">请勿</strong>在园区燃放烟花爆竹、放飞风筝、气球和搭建帐篷。</div></div>
+        <div class="info-item"><div class="info-num">7</div><div>参观期间请爱护园区环境，请勿随意丢垃圾，勿在建筑物和雕塑上随意涂画；不攀爬围墙、不采摘花朵、不折枝等。</div></div>
+        <div class="info-item"><div class="info-num">8</div><div>园区内生态多样，为了您的安全，<strong>请勿投喂动物</strong>，勿在河边随意走动，以防落水。</div></div>
+      </div>
+
+      <div class="highlight-box red-bg mb-4">
+        <div class="flex items-center gap-2 mb-2">
+          <i data-lucide="ambulance" style="width:18px;height:18px;color:#E53827;"></i>
+          <span class="text-sm font-extrabold text-[#E53827]">医疗应急</span>
+        </div>
+        <p class="text-sm text-[#555] leading-relaxed">
+          活动中遇到任何医疗应急问题，请立即拨打
+          <a href="tel:0769-28250120" class="font-extrabold text-[#E53827] text-base">0769-28250120</a>
+          （溪村急救调度中心），或前往溪村 <strong>G10 医疗点</strong>。
+        </p>
+      </div>
+
+      <div class="text-center py-4">
+        <p class="text-sm font-bold text-[#42AAF4]">🎉 祝大家玩得开心，安全第一，快乐第二！</p>
+        <p class="text-xs text-[#999] mt-1">谢谢大家的配合！</p>
+      </div>
+    </div>
+
+    <!-- ========== TAB 2: 活动流程 ========== -->
+    <div id="tab-schedule" class="tab-panel">
+
+      <!-- 阶段一：车辆信息 -->
+      <div class="stage-card">
+        <div class="stage-title">
+          <div class="icon-badge" style="background:linear-gradient(135deg,#42AAF4,#6bc0f7);">
+            <i data-lucide="bus" style="width:16px;height:16px;"></i>
+          </div>
+          车辆信息
+        </div>
+
+        <div class="flex items-center gap-2 mb-3 flex-wrap">
+          <span class="tag-pill" style="background:#E8F4FD;color:#42AAF4;">
+            <i data-lucide="calendar" style="width:12px;height:12px;"></i>
+            2026年9月13日（周日）
+          </span>
+          <span class="tag-pill" style="background:#FFF5E8;color:#FF9A30;">
+            <i data-lucide="clock" style="width:12px;height:12px;"></i>
+            09:00 - 17:00
+          </span>
+        </div>
+
+        <div class="text-label flex items-center gap-1.5 mb-2">
+          <i data-lucide="navigation" style="width:14px;height:14px;color:#42AAF4;"></i>
+          导航信息
+        </div>
+
+        <div class="space-y-2 mb-3">
+          <div class="flex gap-2 text-sm text-[#555] leading-relaxed">
+            <span class="font-bold text-[#42AAF4] flex-shrink-0">自驾：</span>
+            <span>导航华为溪流背坡村 <strong>G区东门 / H区北门</strong> 进入，建议您 <strong class="text-[#E53827]">8:30/13:30前</strong> 到达</span>
+          </div>
+          <div class="flex gap-2 text-sm text-[#555] leading-relaxed">
+            <span class="font-bold text-[#37D261] flex-shrink-0">步行：</span>
+            <span>从溪村 <strong>H区三家巷</strong> 进入，建议您 <strong class="text-[#E53827]">8:30/13:30前</strong> 到达</span>
+          </div>
+        </div>
+
+        <div class="text-label flex items-center gap-1.5 mb-2">
+          <i data-lucide="bus-front" style="width:14px;height:14px;color:#FF9A30;"></i>
+          乘坐大巴
+        </div>
+
+        <div class="bg-[#F0F7FF] rounded-xl p-3 space-y-2 text-sm text-[#555] leading-relaxed">
+          <div class="flex gap-2">
+            <span class="tag-pill flex-shrink-0" style="background:#42AAF4;color:#fff;">去程</span>
+            <span><strong>07:30 / 12:30</strong> 深圳坂田H区东门、安托山班车停车点集合乘车至溪村</span>
+          </div>
+          <div class="flex gap-2">
+            <span class="tag-pill flex-shrink-0" style="background:#FF9A30;color:#fff;">返程</span>
+            <span><strong>13:00 / 18:00</strong> 溪村L区停车场集合，返回深圳安托山、坂田华为地铁站-嘉御山-荔枝苑</span>
+          </div>
+        </div>
+
+        <div class="highlight-box red-bg mt-3">
+          <p class="text-xs text-[#555] leading-relaxed">
+            <strong class="text-[#E53827]">⚠ 温馨提醒：</strong>信息安全要求，家属不能进入办公区参观，请勿带家属从地库闸机刷卡进入大堂区域。
+          </p>
+        </div>
+      </div>
+
+      <!-- 阶段二：活动流程 -->
+      <div class="stage-card orange">
+        <div class="stage-title">
+          <div class="icon-badge" style="background:linear-gradient(135deg,#FF9A30,#ffb866);">
+            <i data-lucide="route" style="width:16px;height:16px;"></i>
+          </div>
+          活动流程
+        </div>
+        <img src="schedule.png" alt="活动流程" class="w-full h-auto rounded-xl block" onerror="this.outerHTML='<div class=\'img-placeholder\' style=\'min-height:200px;\'><i data-lucide=\'image-plus\' style=\'width:40px;height:40px;\'></i><span class=\'text-sm font-semibold\'>活动流程图片位</span><span class=\'text-xs opacity-70\'>请将流程图命名为 schedule.png 放在同目录</span></div>';lucide.createIcons();">
+      </div>
+
+      <!-- 阶段三：礼品兑换 -->
+      <div class="stage-card green">
+        <div class="stage-title">
+          <div class="icon-badge" style="background:linear-gradient(135deg,#37D261,#6be090);">
+            <i data-lucide="gift" style="width:16px;height:16px;"></i>
+          </div>
+          礼品兑换
+        </div>
+
+        <div class="flex items-center gap-2 mb-3">
+          <span class="tag-pill" style="background:#ECFDF3;color:#37D261;">
+            <i data-lucide="clock" style="width:12px;height:12px;"></i>
+            11:30 - 15:30
+          </span>
+        </div>
+
+        <div class="bg-[#F0FDF4] rounded-xl p-3 mb-3">
+          <div class="flex items-center gap-2 mb-1.5">
+            <i data-lucide="package" style="width:15px;height:15px;color:#37D261;"></i>
+            <span class="text-sm font-extrabold text-[#333]">家庭礼包</span>
+          </div>
+          <p class="text-sm text-[#555] leading-relaxed pl-6">
+            每个家庭可凭<strong>家庭礼包兑换券</strong>，在溪村 <strong>G10家庭礼包领取处</strong> 领取一份定制家庭礼包。
+          </p>
+        </div>
+
+        <div class="bg-[#FFF8F0] rounded-xl p-3">
+          <div class="flex items-center gap-2 mb-1.5">
+            <i data-lucide="trophy" style="width:15px;height:15px;color:#FF9A30;"></i>
+            <span class="text-sm font-extrabold text-[#333]">游戏礼品</span>
+          </div>
+          <p class="text-sm text-[#555] leading-relaxed pl-6">
+            集章兑换礼品，每本手册限兑一次，<strong class="text-[#E53827]">礼品有限，兑完即止</strong>；兑换地点：溪村 <strong>G10游戏礼品兑换区</strong>。
+          </p>
+        </div>
+      </div>
+
+      <!-- 阶段四：用餐信息 -->
+      <div class="stage-card red">
+        <div class="stage-title">
+          <div class="icon-badge" style="background:linear-gradient(135deg,#E53827,#f06a5c);">
+            <i data-lucide="utensils" style="width:16px;height:16px;"></i>
+          </div>
+          用餐信息
+        </div>
+
+        <div class="flex items-center gap-2 mb-3 flex-wrap">
+          <span class="tag-pill" style="background:#FEF0EF;color:#E53827;">
+            <i data-lucide="calendar" style="width:12px;height:12px;"></i>
+            2026年9月13日（周日）
+          </span>
+        </div>
+
+        <div class="text-sm text-[#555] leading-relaxed mb-3">
+          <div class="flex gap-2 mb-1">
+            <span class="font-bold text-[#333] flex-shrink-0">使用时间：</span>
+            <span><strong>11:30-13:00</strong> / <strong>17:00-18:00</strong></span>
+          </div>
+          <div class="flex gap-2">
+            <span class="font-bold text-[#333] flex-shrink-0">用餐地点：</span>
+            <span>G1家乐缘 / G3探鱼 / 秦关面道 / H10肯德基（以上餐厅自由选择）</span>
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <div class="text-xs font-extrabold text-[#FF9A30] mb-1.5">温馨提示</div>
+          <div class="space-y-1 text-xs text-[#555] leading-relaxed">
+            <div>1. 此券仅限活动当天内使用，过期作废；</div>
+            <div>2. 超出餐券套餐以外的消费需另外扫码支付；</div>
+            <div>3. 用餐高峰期需要排队等候，请您谅解！</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ========== TAB 3: 活动地图 ========== -->
+    <div id="tab-map" class="tab-panel">
+
+      <div class="section-heading">现场地图 </div>
+      <p class="text-sm text-[#555] mb-4 -mt-2"> 找到你最想去游玩的点🎮</p>
+
+      <div class="map-container mb-5">
+        <img src="map.jpg" alt="溪村园区地图" class="w-full h-auto block" onerror="this.outerHTML='<div class=\'img-placeholder\' style=\'min-height:380px;border-radius:0;border:none;background:linear-gradient(135deg,#d4ecfd 0%,#b8e0fb 50%,#e8f4fd 100%);\'><div class=\'text-center\'><i data-lucide=\'map\' style=\'width:48px;height:48px;color:#42AAF4;opacity:.6;\'></i><p class=\'text-sm font-semibold text-[#42AAF4] mt-2\'>溪村园区地图</p><p class=\'text-xs text-[#42AAF4] opacity-70 mt-1\'>请将地图命名为 map.jpg 放在同目录</p></div></div>';lucide.createIcons();">
+
+      </div>
+
+      <div class="section-heading">游戏一览</div>
+	<p class="text-sm text-[#555] mb-4 -mt-2"> 点击查看游戏详细规则🎮</p>
+      <div class="play-card p-4 mb-4">
+        <div id="gameList"></div>
+      </div>
+    </div>
+
+    <!-- ========== TAB 4: 精彩瞬间 ========== -->
+    <div id="tab-moments" class="tab-panel">
+
+      <!-- 照片直播 -->
+      <div class="stage-card">
+        <div class="stage-title">
+          <div class="icon-badge" style="background:linear-gradient(135deg,#42AAF4,#6bc0f7);">
+            <i data-lucide="camera" style="width:16px;height:16px;"></i>
+          </div>
+          照片直播
+        </div>
+        <div class="text-center py-4">
+          <p class="text-sm font-bold text-[#333] mb-4">📸 点击跳转照片直播</p>
+          <img src="qr-photo.png" alt="照片直播二维码" class="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 max-w-full rounded-xl object-contain mx-auto" style="border:3px solid #42AAF4;" onerror="this.outerHTML='<div class=\'qr-box\'><div class=\'relative z-10 text-center\'><i data-lucide=\'qr-code\' style=\'width:40px;height:40px;color:#42AAF4;\'></i><p class=\'text-xs text-[#42AAF4] mt-1 font-semibold\'>请将二维码命名为 qr-photo.png</p></div></div>';lucide.createIcons();">
+          <p class="text-xs text-[#999] mt-3">扫码或点击查看活动实时精彩照片</p>
+         <button class="mt-4 px-6 py-2.5 rounded-full text-white text-sm font-bold shadow-lg"
+        style="background:linear-gradient(135deg,#42AAF4,#6bc0f7);box-shadow:0 4px 14px rgba(66,170,244,0.35);"
+        onclick="window.open('https://m.alltuu.com/album/c53ae4b2aadcb81b7fee0851d66dbeb7/?from=qrCode&menu=live', '_blank')">
+ 	 <span class="inline-flex items-center gap-1.5">
+   	 <i data-lucide="external-link" style="width:14px;height:14px;"></i>
+    进入照片直播
+  </span>
+</button>
+
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 满意度调查 -->
+      <div class="stage-card orange">
+        <div class="stage-title">
+          <div class="icon-badge" style="background:linear-gradient(135deg,#FF9A30,#ffb866);">
+            <i data-lucide="clipboard-list" style="width:16px;height:16px;"></i>
+          </div>
+          满意度调查
+        </div>
+        <div class="text-center py-4">
+          <p class="text-sm font-bold text-[#333] mb-4">📝 点击进入满意度调查问卷</p>
+          <img src="qr-survey.jpg" alt="满意度调查二维码" class="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 max-w-full rounded-xl object-contain mx-auto" style="border:3px solid #FF9A30;" onerror="this.outerHTML='<div class=\'qr-box\' style=\'border-color:#FF9A30;\'><div class=\'relative z-10 text-center\'><i data-lucide=\'qr-code\' style=\'width:40px;height:40px;color:#FF9A30;\'></i><p class=\'text-xs text-[#FF9A30] mt-1 font-semibold\'>请将二维码命名为 qr-survey.jpg</p></div></div>';lucide.createIcons();">
+          <p class="text-xs text-[#999] mt-3">您的反馈是我们进步的动力！</p>
+	<button class="mt-4 px-6 py-2.5 rounded-full text-white text-sm font-bold shadow-lg"
+        style="background:linear-gradient(135deg,#FF9A30,#ffb866);box-shadow:0 4px 14px rgba(255,154,48,0.35);"
+        onclick="window.open('https://v.wjx.cn/vm/mDBpssY.aspx', '_blank')">
+  <span class="inline-flex items-center gap-1.5">
+    <i data-lucide="edit-3" style="width:14px;height:14px;"></i>
+    填写调查问卷
+	  </span>
+	</button>
+        </div>
+      </div>
+
+            <!-- 感谢语 -->
+      <div class="text-center py-4">
+        <div class="inline-block bg-gradient-to-r from-sky/10 to-orange/10 px-6 py-4 rounded-2xl">
+          <p class="text-sm font-bold text-ink">✨ 超能时光机，源梦溪游记 ✨</p>
+          <p class="text-xs text-sub mt-1">感谢每一位家人的到来与陪伴</p>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+  </div>
+
+  <!-- ==================== BOTTOM NAV ==================== -->
+  <nav class="bottom-nav">
+    <div class="nav-item active" data-tab="notice" onclick="switchTab('notice')">
+      <div class="nav-icon-wrap"><i data-lucide="file-text" style="width:20px;height:20px;"></i></div>
+      <span class="nav-label">活动须知</span>
+    </div>
+    <div class="nav-item" data-tab="schedule" onclick="switchTab('schedule')">
+      <div class="nav-icon-wrap"><i data-lucide="calendar-clock" style="width:20px;height:20px;"></i></div>
+      <span class="nav-label">活动流程</span>
+    </div>
+    <div class="nav-item" data-tab="map" onclick="switchTab('map')">
+      <div class="nav-icon-wrap"><i data-lucide="map-pinned" style="width:20px;height:20px;"></i></div>
+      <span class="nav-label">活动地图</span>
+    </div>
+    <div class="nav-item" data-tab="moments" onclick="switchTab('moments')">
+      <div class="nav-icon-wrap"><i data-lucide="images" style="width:20px;height:20px;"></i></div>
+      <span class="nav-label">精彩瞬间</span>
+    </div>
+  </nav>
+
+</div>
+
+<!-- ==================== GAME MODAL ==================== -->
+<div class="modal-overlay" id="gameModal" onclick="closeGameModal(event)">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <button class="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition" onclick="closeGameModal()">
+      <i data-lucide="x" style="width:16px;height:16px;color:#666;"></i>
+    </button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+  // ===== Game data =====
+  const games = [
+    {
+      name: '铁环追风记',
+      icon: 'circle-dot',
+      players: '每组家庭2人',
+      color: '#42AAF4',
+      gradient: 'linear-gradient(135deg,#42AAF4,#6bc0f7)',
+      rule: '在规定场地内，参赛家庭指派2名成员进行挑战，挑战者需相互手持铁钩推动铁环前行，全程不掉环，即算完赛，可获得一个年代电影盖章。'
+    },
+    {
+      name: '方格筑梦屋',
+      icon: 'grid-3x3',
+      players: '每组家庭1人',
+      color: '#FF9A30',
+      gradient: 'linear-gradient(135deg,#FF9A30,#ffb866)',
+      rule: '在规定场地内，玩家站在格子线外，将沙包随机投入有数字的格子中，按顺序跳跃前进，遇到单格时单脚跳，遇到双格时可以双脚同时着地。跳跃时不能踩线、不能落在有沙包的格子里。完成游戏，可获得一个年代电影盖章。'
+    },
+    {
+      name: '魔童乾坤圈',
+      icon: 'target',
+      players: '每组家庭2人',
+      color: '#37D261',
+      gradient: 'linear-gradient(135deg,#37D261,#6be090)',
+      rule: '在规定场地内，1人站在线外，1人站在线内，进行套圈游戏，玩家1将手中的3个套圈依次丢到玩家2的头戴游戏道具上，成功套中2个圈即可通关，可获得一个年代电影盖章。'
+    },
+    {
+      name: '点球大战',
+      icon: 'circle',
+      players: '每组家庭1人',
+      color: '#E53827',
+      gradient: 'linear-gradient(135deg,#E53827,#f06a5c)',
+      rule: '在规定场地内，玩家站在线外，进行射门，每人3次射门机会，射中1球即可通关，可获得一个年代电影盖章。'
+    },
+    {
+      name: '唐人街探案',
+      icon: 'search',
+      players: '每组家庭1人',
+      color: '#9b59b6',
+      gradient: 'linear-gradient(135deg,#9b59b6,#bb8fce)',
+      rule: '在两幅图片中找出至少5处不同点，即为挑战成功，可获得一个年代电影盖章。'
+    },
+    {
+      name: '时光信箱',
+      icon: 'mail',
+      players: '每组家庭体验1次',
+      color: '#e8c47a',
+      gradient: 'linear-gradient(135deg,#e8c47a,#F9DEB1)',
+      rule: '通过扫描二维码，上传图片和录音，保存照片，声音会转化成专属二维码，让思念"声"入人心，浪漫跨越距离。'
+    },
+    {
+      name: '腾云驾雾',
+      icon: 'gamepad-2',
+      players: '每组家庭体验1次',
+      color: '#1abc9c',
+      gradient: 'linear-gradient(135deg,#1abc9c,#48c9b0)',
+      rule: '在规定场地内，玩家通过游戏设备感应个人肢体来推动游戏的进行。'
+    }
+  ];
+
+  // ===== Render game list =====
+  function renderGameList() {
+    const list = document.getElementById('gameList');
+    list.innerHTML = games.map((g, i) => `
+      <div class="flex items-center gap-3 py-2.5 border-b border-dashed border-[#42AAF4]/15 last:border-0 cursor-pointer hover:bg-[#F0F7FF] rounded-lg px-2 transition" onclick="openGameModal(${i})">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background:${g.gradient};">
+          <i data-lucide="${g.icon}" style="width:16px;height:16px;color:#fff;"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="text-sm font-bold text-[#333]">${i+1}. ${g.name}</span>
+            <span class="text-[10px] font-semibold px-1.5 py-0.5 rounded" style="background:${g.color}15;color:${g.color};">${g.players}</span>
+          </div>
+          <div class="text-xs text-[#999] truncate">${g.rule}</div>
+        </div>
+        <i data-lucide="chevron-right" style="width:16px;height:16px;color:#ccc;flex-shrink:0;"></i>
+      </div>
+    `).join('');
+    lucide.createIcons();
+  }
+
+  // ===== Modal =====
+  function openGameModal(index) {
+    const g = games[index];
+    const content = document.getElementById('modalContent');
+    content.innerHTML = `
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center" style="background:${g.gradient};box-shadow:0 4px 12px ${g.color}40;">
+          <i data-lucide="${g.icon}" style="width:22px;height:22px;color:#fff;"></i>
+        </div>
+        <div>
+          <div class="text-xs text-[#999] font-semibold">游戏 ${index+1}</div>
+          <div class="text-lg font-extrabold text-[#333]">${g.name}</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 mb-3">
+        <span class="tag-pill" style="background:${g.color}15;color:${g.color};">
+          <i data-lucide="users" style="width:12px;height:12px;"></i>
+          ${g.players}
+        </span>
+      </div>
+      <div class="bg-[#F0F7FF] rounded-xl p-4">
+        <div class="text-xs font-extrabold mb-2" style="color:${g.color};">游戏规则</div>
+        <p class="text-sm text-[#555] leading-relaxed">${g.rule}</p>
+      </div>
+      <button class="w-full mt-5 py-3 rounded-xl text-white text-sm font-bold" style="background:${g.gradient};box-shadow:0 4px 14px ${g.color}40;" onclick="closeGameModal()">
+        我知道了
+      </button>
+    `;
+    document.getElementById('gameModal').classList.add('show');
+    lucide.createIcons();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeGameModal(e) {
+    if (e && e.target !== e.currentTarget) return;
+    document.getElementById('gameModal').classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  // ===== Tab switching =====
+  function switchTab(tabName) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('tab-' + tabName).classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.querySelector(`.nav-item[data-tab="${tabName}"]`).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ===== Init =====
+  document.addEventListener('DOMContentLoaded', () => {
+    lucide.createIcons();
+    renderGameList();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeGameModal();
+  });
+</script>
+
+</body>
+</html>
